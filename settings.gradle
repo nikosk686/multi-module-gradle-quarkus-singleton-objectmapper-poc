@@ -1,0 +1,14 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    plugins {
+        id 'io.quarkus' version "${quarkusPluginVersion}"
+    }
+}
+rootProject.name = 'multi-module-gradle-quarkus-singleton-objectmapper-poc'
+include 'master-module'
+include "${activeClientModule}"
+

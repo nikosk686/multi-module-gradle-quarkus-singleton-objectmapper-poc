@@ -1,0 +1,36 @@
+import org.gradle.api.JavaVersion
+
+allprojects {
+    apply plugin:'java'
+
+    group 'com.example'
+    version '1.0.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    compileJava {
+        options.encoding = 'UTF-8'
+        options.compilerArgs << '-parameters'
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    compileTestJava {
+        options.encoding = 'UTF-8'
+    }
+
+    dependencies {
+        implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.1'
+        compileOnly 'org.projectlombok:lombok:1.18.16'
+        annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+        testCompileOnly 'org.projectlombok:lombok:1.18.16'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    }
+}
